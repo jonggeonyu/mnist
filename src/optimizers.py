@@ -71,8 +71,8 @@ class Adam:
                 self.v[key] = np.zeros_like(param)
 
         self.t += 1
-        bias1 = 1.0 - self.beta1 ** self.t
-        bias2 = 1.0 - self.beta2 ** self.t
+        bias1 = 1.0 - self.beta1**self.t
+        bias2 = 1.0 - self.beta2**self.t
 
         for key in params:
             grad = grads[key]
