@@ -31,8 +31,16 @@ class TwoLayerNet:
         layers: forward 순서대로 담긴 레이어 리스트.
     """
 
-    def __init__(self, input_size=784, hidden_size=128, output_size=10,
-                 use_batchnorm=False, use_dropout=False, dropout_ratio=0.2, seed=0):
+    def __init__(
+        self,
+        input_size=784,
+        hidden_size=128,
+        output_size=10,
+        use_batchnorm=False,
+        use_dropout=False,
+        dropout_ratio=0.2,
+        seed=0,
+    ):
         """
         Args:
             hidden_size: 은닉층 뉴런 수. 필수 과제에서는 기본값 128을 사용합니다.

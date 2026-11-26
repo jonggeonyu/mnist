@@ -32,12 +32,13 @@ def iterate_minibatches(x, y, batch_size, shuffle=True, rng=None):
 
     indices = rng.permutation(len(x)) if shuffle else np.arange(len(x))
     for start in range(0, len(x), batch_size):
-        batch_idx = indices[start:start + batch_size]
+        batch_idx = indices[start : start + batch_size]
         yield x[batch_idx], y[batch_idx]
 
 
-def train(model, criterion, optimizer, x_train, y_train,
-          epochs=10, batch_size=128, seed=0, verbose=True):
+def train(
+    model, criterion, optimizer, x_train, y_train, epochs=10, batch_size=128, seed=0, verbose=True
+):
     """
     미니배치 학습 루프.
 
@@ -91,8 +92,9 @@ def train(model, criterion, optimizer, x_train, y_train,
     return loss_history
 
 
-def gradient_check(model, criterion, x, y, num_checks=8, eps=1e-5, tol=1e-6,
-                   atol=1e-8, seed=0, verbose=True):
+def gradient_check(
+    model, criterion, x, y, num_checks=8, eps=1e-5, tol=1e-6, atol=1e-8, seed=0, verbose=True
+):
     """
     (제공 코드) 학생이 구현한 backward가 수학적으로 맞는지 검사합니다.
 
@@ -154,8 +156,10 @@ def gradient_check(model, criterion, x, y, num_checks=8, eps=1e-5, tol=1e-6,
             max_rel_error = max(max_rel_error, rel_error)
 
             if verbose and rel_error > tol:
-                print(f"  [{key}]{index} 수치={numeric:+.8f} 해석적={analytic_value:+.8f} "
-                      f"상대오차={rel_error:.2e}")
+                print(
+                    f"  [{key}]{index} 수치={numeric:+.8f} 해석적={analytic_value:+.8f} "
+                    f"상대오차={rel_error:.2e}"
+                )
 
     ok = max_rel_error <= tol
     if verbose:
