@@ -1,0 +1,13 @@
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+# Template tests, tools, and notebooks stay as provided.
+extend-exclude = ["tests", "tools", "*.ipynb"]
+
+[tool.ruff.lint]
+# Pin the rule set so Zed's bundled ruff and CI read the same rules.
+select = ["E4", "E7", "E9", "F", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+# Template script: imports after the sys.path insert on purpose.
+"download_mnist.py" = ["E402"]
